@@ -1,10 +1,15 @@
+import { useState } from "react";
 import AddTask from "./AddTask";
 import CompletedSwitch from "./CompletedSwitch";
 
-export default function ButtonsContainer({ completed, setCompleted }) {
+export default function ButtonsContainer({
+	completed,
+	setCompleted,
+	openModal,
+}) {
 	return (
 		<div className="flex flex-col sm:flex-row justify-between items-center mb-4">
-			<AddTask />
+			<AddTask openModal={openModal} />
 			<CompletedSwitch
 				completed={completed}
 				setCompleted={setCompleted}

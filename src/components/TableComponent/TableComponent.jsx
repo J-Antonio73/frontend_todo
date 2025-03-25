@@ -1,4 +1,9 @@
-export default function TableComponent() {
+export default function TableComponent({ openModal }) {
+	const dataExample = {
+		title: "Comer",
+		description: "Comer Pizza",
+		limit_date: "2021-10-10",
+	};
 	return (
 		<>
 			<table className="table-auto w-full border-collapse border border-gray-400">
@@ -50,7 +55,10 @@ export default function TableComponent() {
 							</button>
 						</td>
 						<td className="border border-gray-300 px-4 py-2 text-center">
-							<button className="text-blue-600 hover:text-blue-700 focus:outline-none cursor-pointer">
+							<button
+								className="text-blue-600 hover:text-blue-700 focus:outline-none cursor-pointer"
+								onClick={() => openModal(dataExample)}
+							>
 								<i className="fa-solid fa-xl fa-pen-to-square "></i>
 							</button>
 						</td>
