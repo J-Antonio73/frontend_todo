@@ -62,7 +62,7 @@ export default function TableComponent() {
 					</tr>
 					<tr>
 						<td className="border border-gray-300 px-2 py-2 ">
-							Estudiar
+							Estudiar typescript
 						</td>
 						<td className="border border-gray-300 px-2 py-2 ">
 							Estudiar react
