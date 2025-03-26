@@ -9,9 +9,9 @@ export default function ConfirmModal({
 	notifySuccess,
 	notifyError,
 }) {
-	const onConfirm = () => {
+	const onConfirm = async () => {
 		if (confirmationData.type === "delete") {
-			const taskDeleted = DeleteTask(confirmationData.id);
+			const taskDeleted = await DeleteTask(confirmationData.id);
 			if (taskDeleted instanceof Error) {
 				notifyError("Error al eliminar la tarea");
 				return;
@@ -20,7 +20,7 @@ export default function ConfirmModal({
 			closeModal();
 		}
 		if (confirmationData.type === "update") {
-			const taskUpdated = UpdateStatus(confirmationData.id);
+			const taskUpdated = await UpdateStatus(confirmationData.id);
 			if (taskUpdated instanceof Error) {
 				notifyError("Error al actualizar la tarea");
 				return;
