@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { AddTask } from "./lib/AddTask";
 
-export default function AddModal({ closeModal }) {
+export default function AddModal({ closeModal, notifySuccess, notifyError }) {
 	const [titulo, setTitulo] = useState("");
 	const [descripcion, setDescripcion] = useState("");
 	const [fechaLimite, setFechaLimite] = useState("");
@@ -16,8 +16,10 @@ export default function AddModal({ closeModal }) {
 
 		const taskAdded = await AddTask(task);
 		if (taskAdded instanceof Error) {
+			notifyError("Error al agregar la tarea");
 			return;
 		}
+		notifySuccess("Tarea agregada correctamente");
 		closeModal();
 	};
 	return (
