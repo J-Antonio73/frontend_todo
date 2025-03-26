@@ -1,5 +1,6 @@
 import React from "react";
 import { DeleteTask } from "./lib/DeleteTask";
+import { UpdateStatus } from "./lib/UpdateStatus";
 
 export default function ConfirmModal({
 	closeModal,
@@ -17,6 +18,13 @@ export default function ConfirmModal({
 			}
 			notifySuccess("Tarea eliminada correctamente");
 			closeModal();
+		}
+		if (confirmationData.type === "update") {
+			const taskUpdated = UpdateStatus(confirmationData.id);
+			if (taskUpdated instanceof Error) {
+				notifyError("Error al actualizar la tarea");
+				return;
+			}
 		}
 	};
 
