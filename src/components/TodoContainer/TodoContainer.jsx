@@ -3,6 +3,7 @@ import TableComponent from "../TableComponent/TableComponent";
 import ButtonsContainer from "../ButtonsHeader/ButtonsContainer";
 import AddModal from "../ModalComponent/AddModal";
 import EditModal from "../ModalComponent/EditModal";
+import ConfirmModal from "../ModalComponent/ConfirmationModal";
 import { getTasks } from "../FetchTask/FetchTask";
 import { ToastContainer, toast, Bounce } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -12,6 +13,9 @@ export default function TodoContainer() {
 	const [editIsOpen, setEditIsOpen] = useState(false);
 	const [data, setData] = useState([]);
 	const [editData, setEditData] = useState({});
+	const [confirmation, setConfirmation] = useState(false);
+	const [confirmationMessage, setConfirmationMessage] = useState("");
+	const [confirmationData, setConfirmationData] = useState({});
 
 	useEffect(() => {
 		getTasks().then((data) => setData(data));
@@ -23,6 +27,13 @@ export default function TodoContainer() {
 		setEditData(data);
 		setEditIsOpen(true);
 	};
+	const closeEditModal = () => setEditIsOpen(false);
+	const openConfirmation = (message, type, id) => {
+		setConfirmation(true);
+		setConfirmationData({ type, id });
+		setConfirmationMessage(message);
+	};
+	const closeConfirmation = () => setConfirmation(false);
 
 	const notifySuccess = (message) => {
 		toast.success(message, {
@@ -52,12 +63,15 @@ export default function TodoContainer() {
 		});
 	};
 
-	const closeEditModal = () => setEditIsOpen(false);
 	return (
 		<div className="w-full pt-6">
 			<ButtonsContainer openModal={openAddModal} />
 			<section className="overflow-y-auto max-h-[400px]">
-				<TableComponent openModal={openEditModal} data={data} />
+				<TableComponent
+					openModal={openEditModal}
+					data={data}
+					openConfirmation={openConfirmation}
+				/>
 			</section>
 			{addIsOpen && (
 				<AddModal
@@ -70,6 +84,15 @@ export default function TodoContainer() {
 				<EditModal
 					closeModal={closeEditModal}
 					data={editData}
+					notifySuccess={notifySuccess}
+					notifyError={notifyError}
+				/>
+			)}
+			{confirmation && (
+				<ConfirmModal
+					closeModal={closeConfirmation}
+					confirmationMessage={confirmationMessage}
+					confirmationData={confirmationData}
 					notifySuccess={notifySuccess}
 					notifyError={notifyError}
 				/>

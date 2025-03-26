@@ -1,5 +1,5 @@
 import TableSkeleton from "./TableSkeleton";
-export default function TableComponent({ openModal, data }) {
+export default function TableComponent({ openModal, data, openConfirmation }) {
 	const isLoading = data.length === 0;
 
 	return (
@@ -59,7 +59,16 @@ export default function TableComponent({ openModal, data }) {
 										)}
 									</td>
 									<td className="border border-gray-300 px-4 py-2 text-center">
-										<button className="text-green-600 hover:text-green-800 focus:outline-none cursor-pointer">
+										<button
+											onClick={() => {
+												openConfirmation(
+													"Completar esta tarea?",
+													"update",
+													task.id
+												);
+											}}
+											className="text-green-600 hover:text-green-800 focus:outline-none cursor-pointer"
+										>
 											<i className="fa-solid fa-xl fa-square-check"></i>
 										</button>
 									</td>
@@ -72,7 +81,16 @@ export default function TableComponent({ openModal, data }) {
 										</button>
 									</td>
 									<td className="border border-gray-300 px-4 py-2 text-center">
-										<button className="text-red-600 hover:text-red-700 focus:outline-none cursor-pointer">
+										<button
+											onClick={() => {
+												openConfirmation(
+													"Eliminar esta tarea?",
+													"delete",
+													task.id
+												);
+											}}
+											className="text-red-600 hover:text-red-700 focus:outline-none cursor-pointer"
+										>
 											<i className="fa-solid fa-xl fa-square-minus"></i>
 										</button>
 									</td>
