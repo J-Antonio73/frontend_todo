@@ -59,18 +59,27 @@ export default function TableComponent({ openModal, data, openConfirmation }) {
 										)}
 									</td>
 									<td className="border border-gray-300 px-4 py-2 text-center">
-										<button
-											onClick={() => {
-												openConfirmation(
-													"Completar esta tarea?",
-													"update",
-													task.id
-												);
-											}}
-											className="text-green-600 hover:text-green-800 focus:outline-none cursor-pointer"
-										>
-											<i className="fa-solid fa-xl fa-square-check"></i>
-										</button>
+										{task.completed === 0 ? (
+											<button
+												onClick={() => {
+													openConfirmation(
+														"Completar esta tarea?",
+														"update",
+														task.id
+													);
+												}}
+												className="text-green-600 hover:text-green-800 focus:outline-none cursor-pointer"
+											>
+												<i className="fa-solid fa-xl fa-square-check"></i>
+											</button>
+										) : (
+											<button
+												className="text-gray-600"
+												disabled
+											>
+												<i className="fa-solid fa-xl fa-square-check"></i>
+											</button>
+										)}
 									</td>
 									<td className="border border-gray-300 px-4 py-2 text-center">
 										<button
