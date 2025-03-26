@@ -1,12 +1,32 @@
-# React + Vite
+# FRONTEND TODO APP
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Frontend de app TODO
 
-Currently, two official plugins are available:
+## Tecnologías utilizadas
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Este proyecto se desarrolló con las siguientes caracteristicas:
 
-## Expanding the ESLint configuration
+-   React.js
+-   TailwindCSS
+-   react-toastify
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Variables de entorno
+
+Asegurate de tener esta variable de entorno en tu archivo .env
+
+```sh
+VITE_HOST_BE= Esta será la ruta de la Api a utilizar
+```
+
+Descargar e iniciar
+
+```sh
+npm i
+npm start
+```
+
+# Enlace de produccion
+
+Aplicación en Vercel
+
+-   [Proximamente]()
