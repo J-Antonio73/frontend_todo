@@ -31,7 +31,7 @@ export default function ConfirmModal({
 	};
 
 	return (
-		<div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+		<div className="fixed inset-0 bg-opacity-50 flex justify-center backdrop-blur-sm items-center z-50">
 			<div className="bg-white p-6 rounded-md w-96 shadow-lg">
 				<div className="text-center">
 					<h2 className="text-xl font-semibold">
@@ -40,7 +40,7 @@ export default function ConfirmModal({
 					<div className="flex justify-center mt-6 space-x-4">
 						<button
 							onClick={() => closeModal()}
-							className="px-4 py-2 bg-gray-300 text-gray-800 rounded-lg hover:bg-gray-400"
+							className="px-4 py-2 bg-gray-300 text-gray-800 rounded-lg hover:bg-gray-400 cursor-pointer"
 						>
 							Cancelar
 						</button>
@@ -49,7 +49,7 @@ export default function ConfirmModal({
 								onConfirm();
 								closeModal();
 							}}
-							className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600"
+							className="px-4 py-2 bg-green-500 text-black rounded-lg hover:bg-green-600 cursor-pointer"
 						>
 							Confirmar
 						</button>
