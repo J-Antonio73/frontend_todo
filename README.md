@@ -27,7 +27,7 @@ npm run dev
 
 # Enlace de desarrollo
 
-Aplicación en Vercel
+Aplicación backend
 
 -   [Backend](https://github.com/J-Antonio73/backend_todo)
 
