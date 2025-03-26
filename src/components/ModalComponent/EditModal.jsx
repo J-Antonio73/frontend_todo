@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from "react";
-
-export default function EditModal({ closeModal, data }) {
+import { EditTask } from "./lib/EditTask";
+export default function EditModal({
+	closeModal,
+	data,
+	notifySuccess,
+	notifyError,
+}) {
 	const [title, setTitle] = useState(data.title || "");
 	const [description, setDescription] = useState(data.description || "");
 	const [limitDate, setLimitDate] = useState(data.limit_date || "");
@@ -11,11 +16,20 @@ export default function EditModal({ closeModal, data }) {
 		setLimitDate(data.limit_date);
 	}, [data]);
 
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
 		e.preventDefault();
-		console.log("Título:", title);
-		console.log("Descripción:", description);
-		console.log("Fecha límite:", limitDate);
+		const task = {
+			id: data.id,
+			title,
+			description,
+			limit_date: limitDate,
+		};
+		const taskAdded = await EditTask(task);
+		if (taskAdded instanceof Error) {
+			notifyError("Error al actualizar la tarea");
+			return;
+		}
+		notifySuccess("Tarea actualizada correctamente");
 		closeModal();
 	};
 
