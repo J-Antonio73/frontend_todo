@@ -22,7 +22,7 @@ Descargar e iniciar
 
 ```sh
 npm i
-npm start
+npm run dev
 ```
 
 # Enlace de produccion
