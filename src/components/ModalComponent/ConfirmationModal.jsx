@@ -25,6 +25,8 @@ export default function ConfirmModal({
 				notifyError("Error al actualizar la tarea");
 				return;
 			}
+			notifySuccess("Tarea actualizada correctamente");
+			closeModal();
 		}
 	};
 
