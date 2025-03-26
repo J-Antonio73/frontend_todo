@@ -16,10 +16,12 @@ export default function TodoContainer() {
 	const [confirmation, setConfirmation] = useState(false);
 	const [confirmationMessage, setConfirmationMessage] = useState("");
 	const [confirmationData, setConfirmationData] = useState({});
+	const [completed, setCompleted] = useState(false);
+	const [reload, setReload] = useState(false);
 
 	useEffect(() => {
-		getTasks().then((data) => setData(data));
-	}, []);
+		getTasks(completed).then((data) => setData(data));
+	}, [reload]);
 
 	const openAddModal = () => setAddIsOpen(true);
 	const closeAddModal = () => setAddIsOpen(false);
@@ -36,6 +38,7 @@ export default function TodoContainer() {
 	const closeConfirmation = () => setConfirmation(false);
 
 	const notifySuccess = (message) => {
+		setReload(!reload);
 		toast.success(message, {
 			position: "top-right",
 			autoClose: 5000,
@@ -50,6 +53,7 @@ export default function TodoContainer() {
 	};
 
 	const notifyError = (message) => {
+		setReload(!reload);
 		toast.error(message, {
 			position: "top-right",
 			autoClose: 5000,
@@ -65,7 +69,12 @@ export default function TodoContainer() {
 
 	return (
 		<div className="w-full pt-6">
-			<ButtonsContainer openModal={openAddModal} />
+			<ButtonsContainer
+				completed={completed}
+				setCompleted={setCompleted}
+				openModal={openAddModal}
+				setReload={setReload}
+			/>
 			<section className="overflow-y-auto max-h-[400px]">
 				<TableComponent
 					openModal={openEditModal}
