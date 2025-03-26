@@ -6,6 +6,7 @@ export default function ButtonsContainer({
 	completed,
 	setCompleted,
 	openModal,
+	setReload,
 }) {
 	return (
 		<div className="flex flex-col sm:flex-row justify-between items-center mb-4">
@@ -13,6 +14,7 @@ export default function ButtonsContainer({
 			<CompletedSwitch
 				completed={completed}
 				setCompleted={setCompleted}
+				setReload={setReload}
 			/>
 		</div>
 	);
